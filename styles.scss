@@ -1,0 +1,32 @@
+$color-shadow: #fff;
+$color-main: #0a2a35;
+$font-roboto: Roboto;
+@import url(https://fonts.googleapis.com/css?family=#{$font-roboto}:100italic);
+
+
+@function text-shadow-list($offset, $color) {
+  $text-shadow: ();
+  @for $i from 0 through $offset {
+    $string: -1*($i+1)+px $i+px 0 $color;
+    $text-shadow: append($text-shadow, $string, comma);
+  }
+  @return $text-shadow;
+}
+
+body {
+  background-color: $color-main;
+  padding: 0 10% 0 25%;
+
+}
+
+h1 {
+  color: $color-main;
+  font-family: $font-roboto;
+  font-size: 10em;
+  font-style: italic;
+  font-weight: 100;
+  text-align: center;
+  text-shadow: text-shadow-list(33, $color-shadow);
+  text-transform: uppercase;
+  transform: skew(20deg);
+}
